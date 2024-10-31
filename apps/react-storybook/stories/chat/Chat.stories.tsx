@@ -251,7 +251,7 @@ export const DataLoading: Story = {
             paginate: false,
         }), [reloadOnChange]);
         
-        const onMessageSend = useCallback((e) => {
+        const onMessageEntered = useCallback((e) => {
             if(!reloadOnChange) {
                 e.component.getDataSource().store().push([{ type: 'insert', data: e.message }]);
             }
@@ -267,7 +267,7 @@ export const DataLoading: Story = {
                     disabled={disabled}
                     rtlEnabled={rtlEnabled}
                     user={user}
-                    onMessageSend={onMessageSend}
+                    onMessageEntered={onMessageEntered}
                     visible={visible}
                     hint={hint}
                     activeStateEnabled={activeStateEnabled}
