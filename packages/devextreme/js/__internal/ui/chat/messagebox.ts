@@ -42,7 +42,7 @@ class MessageBox extends DOMComponent<MessageBox, Properties> {
 
   _button!: Button;
 
-  _messageSendAction?: (e: Partial<MessageEnteredEvent>) => void;
+  _messageEnteredAction?: (e: Partial<MessageEnteredEvent>) => void;
 
   _typingStartAction?: (e: Partial<TypingStartEvent>) => void;
 
@@ -66,7 +66,7 @@ class MessageBox extends DOMComponent<MessageBox, Properties> {
   _init(): void {
     super._init();
 
-    this._createMessageSendAction();
+    this._createMessageEnteredAction();
     this._createTypingStartAction();
     this._createTypingEndAction();
   }
@@ -148,8 +148,8 @@ class MessageBox extends DOMComponent<MessageBox, Properties> {
     });
   }
 
-  _createMessageSendAction(): void {
-    this._messageSendAction = this._createActionByOption(
+  _createMessageEnteredAction(): void {
+    this._messageEnteredAction = this._createActionByOption(
       'onMessageEntered',
       { excludeValidators: ['disabled'] },
     );
@@ -205,7 +205,7 @@ class MessageBox extends DOMComponent<MessageBox, Properties> {
     this._textArea.reset();
     this._toggleButtonDisableState(true);
 
-    this._messageSendAction?.({ text, event: e.event });
+    this._messageEnteredAction?.({ text, event: e.event });
   }
 
   _toggleButtonDisableState(state: boolean): void {
@@ -231,7 +231,7 @@ class MessageBox extends DOMComponent<MessageBox, Properties> {
         break;
       }
       case 'onMessageEntered':
-        this._createMessageSendAction();
+        this._createMessageEnteredAction();
 
         break;
       case 'onTypingStart':

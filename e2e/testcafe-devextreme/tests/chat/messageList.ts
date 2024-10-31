@@ -105,7 +105,7 @@ test('Messagelist appearance with scrollbar', async (t) => {
     width: 400,
     height: 600,
     showDayHeaders: false,
-    onMessageSend: (e) => {
+    onMessageEntered: (e) => {
       const { component, message } = e;
 
       component.renderMessage(message);
@@ -232,7 +232,7 @@ test('Messagelist with messageTemplate', async (t) => {
     width: 400,
     height: 600,
     showDayHeaders: false,
-    onMessageSend: ({ component, message }) => {
+    onMessageEntered: ({ component, message }) => {
       message.timestamp = undefined;
       component.renderMessage(message);
     },

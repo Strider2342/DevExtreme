@@ -49,7 +49,7 @@ class Chat extends Widget<Properties> {
 
   _errorList!: ErrorList;
 
-  _messageSendAction?: (e: Partial<MessageEnteredEvent>) => void;
+  _messageEnteredAction?: (e: Partial<MessageEnteredEvent>) => void;
 
   _typingStartAction?: (e: Partial<TypingStartEvent>) => void;
 
@@ -75,7 +75,6 @@ class Chat extends Widget<Properties> {
       typingUsers: [],
       onMessageEntered: undefined,
       reloadOnChange: true,
-      onMessageSend: undefined,
       messageTemplate: null,
       onTypingStart: undefined,
       onTypingEnd: undefined,
@@ -90,7 +89,7 @@ class Chat extends Widget<Properties> {
     // @ts-expect-error
     this._refreshDataSource();
 
-    this._createMessageSendAction();
+    this._createMessageEnteredAction();
     this._createTypingStartAction();
     this._createTypingEndAction();
   }
@@ -247,8 +246,8 @@ class Chat extends Widget<Properties> {
     this._messageBox.updateInputAria(emptyViewId);
   }
 
-  _createMessageSendAction(): void {
-    this._messageSendAction = this._createActionByOption(
+  _createMessageEnteredAction(): void {
+    this._messageEnteredAction = this._createActionByOption(
       'onMessageEntered',
       { excludeValidators: ['disabled'] },
     );
@@ -291,7 +290,7 @@ class Chat extends Widget<Properties> {
       });
     }
 
-    this._messageSendAction?.({ message, event });
+    this._messageEnteredAction?.({ message, event });
   }
 
   _typingStartHandler(e: MessageBoxTypingStartEvent): void {
@@ -353,7 +352,7 @@ class Chat extends Widget<Properties> {
         this._errorList.option('items', value ?? []);
         break;
       case 'onMessageEntered':
-        this._createMessageSendAction();
+        this._createMessageEnteredAction();
         break;
       case 'onTypingStart':
         this._createTypingStartAction();
