@@ -17,7 +17,7 @@ const CHAT_MESSAGEBOX_BUTTON_CLASS = 'dx-chat-messagebox-button';
 
 export const TYPING_END_DELAY = 2000;
 
-export type MessageSendEvent =
+export type MessageEnteredEvent =
   NativeEventInfo<MessageBox, KeyboardEvent | PointerEvent | MouseEvent | TouchEvent> &
   { text?: string };
 
@@ -30,7 +30,7 @@ export interface Properties extends DOMComponentProperties<MessageBox> {
 
   hoverStateEnabled?: boolean;
 
-  onMessageSend?: (e: MessageSendEvent) => void;
+  onMessageEntered?: (e: MessageEnteredEvent) => void;
 
   onTypingStart?: (e: TypingStartEvent) => void;
 
@@ -42,7 +42,7 @@ class MessageBox extends DOMComponent<MessageBox, Properties> {
 
   _button!: Button;
 
-  _messageSendAction?: (e: Partial<MessageSendEvent>) => void;
+  _messageSendAction?: (e: Partial<MessageEnteredEvent>) => void;
 
   _typingStartAction?: (e: Partial<TypingStartEvent>) => void;
 
@@ -57,7 +57,7 @@ class MessageBox extends DOMComponent<MessageBox, Properties> {
       activeStateEnabled: true,
       focusStateEnabled: true,
       hoverStateEnabled: true,
-      onMessageSend: undefined,
+      onMessageEntered: undefined,
       onTypingStart: undefined,
       onTypingEnd: undefined,
     };
@@ -150,7 +150,7 @@ class MessageBox extends DOMComponent<MessageBox, Properties> {
 
   _createMessageSendAction(): void {
     this._messageSendAction = this._createActionByOption(
-      'onMessageSend',
+      'onMessageEntered',
       { excludeValidators: ['disabled'] },
     );
   }
@@ -230,7 +230,7 @@ class MessageBox extends DOMComponent<MessageBox, Properties> {
 
         break;
       }
-      case 'onMessageSend':
+      case 'onMessageEntered':
         this._createMessageSendAction();
 
         break;
