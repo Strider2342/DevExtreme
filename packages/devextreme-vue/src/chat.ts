@@ -17,7 +17,7 @@ type AccessibleOptions = Pick<Properties,
   "items" |
   "onDisposing" |
   "onInitialized" |
-  "onMessageSend" |
+  "onMessageEntered" |
   "onOptionChanged" |
   "onTypingEnd" |
   "onTypingStart" |
@@ -50,7 +50,7 @@ const componentConfig = {
     items: Array,
     onDisposing: Function,
     onInitialized: Function,
-    onMessageSend: Function,
+    onMessageEntered: Function,
     onOptionChanged: Function,
     onTypingEnd: Function,
     onTypingStart: Function,
@@ -79,7 +79,7 @@ const componentConfig = {
     "update:items": null,
     "update:onDisposing": null,
     "update:onInitialized": null,
-    "update:onMessageSend": null,
+    "update:onMessageEntered": null,
     "update:onOptionChanged": null,
     "update:onTypingEnd": null,
     "update:onTypingStart": null,

@@ -416,8 +416,8 @@ type IColumnProps = React.PropsWithChildren<{
   caption?: string;
   cellTemplate?: ((cellElement: any, cellInfo: { column: dxDataGridColumn, columnIndex: number, component: dxDataGrid, data: Record<string, any>, displayValue: any, oldValue: any, row: dxDataGridRowObject, rowIndex: number, rowType: string, text: string, value: any, watch: (() => void) }) => any) | template;
   columns?: Array<dxDataGridColumn | string>;
-  cssClass?: string;
   customizeText?: ((cellInfo: { groupInterval: string | number, target: string, value: any, valueText: string }) => string);
+  cssClass?: string;
   dataField?: string;
   dataType?: "string" | "number" | "date" | "boolean" | "object" | "datetime";
   editCellTemplate?: ((cellElement: any, cellInfo: { column: dxDataGridColumn, columnIndex: number, component: dxDataGrid, data: Record<string, any>, displayValue: any, row: dxDataGridRowObject, rowIndex: number, rowType: string, setValue(newValue, newText): any, text: string, value: any, watch: (() => void) }) => any) | template;
@@ -2768,8 +2768,8 @@ type ISummaryProps = React.PropsWithChildren<{
   totalItems?: Array<Record<string, any>> | {
     alignment?: "center" | "left" | "right";
     column?: string;
-    cssClass?: string;
     customizeText?: ((itemInfo: { value: string | number | Date, valueText: string }) => string);
+    cssClass?: string;
     displayFormat?: string;
     name?: string;
     showInColumn?: string;
@@ -2979,8 +2979,8 @@ const ToolbarItem = Object.assign<typeof _componentToolbarItem, NestedComponentM
 type ITotalItemProps = React.PropsWithChildren<{
   alignment?: "center" | "left" | "right";
   column?: string;
-  cssClass?: string;
   customizeText?: ((itemInfo: { value: string | number | Date, valueText: string }) => string);
+  cssClass?: string;
   displayFormat?: string;
   name?: string;
   showInColumn?: string;
