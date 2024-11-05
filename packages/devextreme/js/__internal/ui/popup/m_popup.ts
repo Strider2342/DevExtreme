@@ -146,6 +146,7 @@ const Popup = Overlay.inherit({
       useDefaultToolbarButtons: false,
       useFlatToolbarButtons: false,
       autoResizeEnabled: true,
+      combobox: false,
     });
   },
 
@@ -284,7 +285,9 @@ const Popup = Overlay.inherit({
 
     this._toggleContentScrollClass();
 
-    this.$overlayContent().attr('role', 'dialog');
+    const { combobox } = this.option();
+
+    this.$overlayContent().attr('role', combobox ? 'combobox' : 'dialog');
   },
 
   _render() {

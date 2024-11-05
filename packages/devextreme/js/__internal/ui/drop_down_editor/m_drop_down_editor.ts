@@ -552,6 +552,8 @@ const DropDownEditor = TextBox.inherit({
 
     delete popupConfig.closeOnOutsideClick;
 
+    popupConfig.combobox = true; // we specify combobox here because it's always the desired role in dropdown's case
+
     this._popup = this._createComponent(this._$popup, Popup, popupConfig);
 
     this._popup.on({
