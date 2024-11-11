@@ -45,7 +45,7 @@ const execTestCafeCode = (t, code) => {
   return testCafeFunction(t);
 };
 
-const COMMON_SKIP_RULES = ['color-contrast'];
+const COMMON_SKIP_RULES = [];
 const getTestSpecificSkipRules = (testName) => {
   switch (testName) {
     case 'Calendar-MultipleSelection':
