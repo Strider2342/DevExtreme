@@ -26,10 +26,7 @@ const optionsWithSimpleItems: Options<Properties> = {
 };
 
 const a11yCheckConfig = {
-  rules: {
-    // NOTE: color-contrast issues
-    'color-contrast': { enabled: false },
-  },
+  rules: {},
 };
 
 const configurationWithSimpleItems: Configuration = {

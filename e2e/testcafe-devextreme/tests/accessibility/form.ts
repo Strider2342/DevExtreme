@@ -26,8 +26,7 @@ const options: Options<Properties> = {
 };
 
 const a11yCheckConfig = {
-  // NOTE: color-contrast issues
-  rules: { 'color-contrast': { enabled: false } },
+  rules: {},
 };
 
 const configuration: Configuration = {

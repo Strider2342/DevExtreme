@@ -2,7 +2,6 @@ import { Properties } from 'devextreme/ui/popover.d';
 import url from '../../helpers/getPageUrl';
 import { defaultSelector, testAccessibility, Configuration } from '../../helpers/accessibility/test';
 import { Options } from '../../helpers/generateOptionMatrix';
-import { isMaterial, isMaterialBased } from '../../helpers/themeUtils';
 
 fixture.disablePageReloads`Accessibility`
   .page(url(__dirname, '../container.html'));
@@ -29,11 +28,9 @@ const options: Options<Properties> = {
   ],
 };
 
-const a11yCheckConfig = isMaterialBased() ? {
-  // NOTE: color-contrast issues in Material
-  runOnly: isMaterial() ? '' : 'color-contrast',
-  rules: { 'color-contrast': { enabled: !isMaterial() } },
-} : {};
+const a11yCheckConfig = {
+  rules: {},
+};
 
 const configuration: Configuration = {
   component: 'dxPopover',

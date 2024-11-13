@@ -23,11 +23,9 @@ const options: Options<Properties> = {
   showCancelButton: [true, false],
 };
 
-const a11yCheckConfig = isMaterialBased() ? {
-  // NOTE: color-contrast issues in Material
-  runOnly: isMaterial() ? '' : 'color-contrast',
-  rules: { 'color-contrast': { enabled: !isMaterial() } },
-} : {};
+const a11yCheckConfig = {
+  rules: {},
+};
 
 const configuration: Configuration = {
   component: 'dxActionSheet',

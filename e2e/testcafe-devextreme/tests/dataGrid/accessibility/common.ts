@@ -408,9 +408,7 @@ const DATA_GRID_SELECTOR = '#container';
     await a11yCheck(t, {
       ...a11yCheckConfig,
       runOnly: '',
-      rules: {
-        'color-contrast': { enabled: false },
-      },
+      rules: {},
     });
     if (isFluent) {
       await screenshotCheck(t, 'filter-builder', theme, dataGrid.element);
@@ -480,9 +478,7 @@ const DATA_GRID_SELECTOR = '#container';
     await a11yCheck(t, {
       ...a11yCheckConfig,
       runOnly: '',
-      rules: {
-        'color-contrast': { enabled: false },
-      },
+      rules: {},
     }, DATA_GRID_SELECTOR);
     if (isFluent) {
       await screenshotCheck(t, 'search-panel-highlight', theme, dataGrid.element);
