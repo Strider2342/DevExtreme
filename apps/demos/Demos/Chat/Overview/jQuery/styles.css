@@ -6,3 +6,7 @@
     align-items: center;
     gap: 30px;
 }
+
+.dx-avatar {
+    border: 1px solid var(--dx-color-border);
+}
