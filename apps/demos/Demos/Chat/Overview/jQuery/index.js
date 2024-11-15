@@ -1,6 +1,5 @@
 $(async () => {
-    const todayDate = new Date();
-    const yesterdayDate = (new Date()).setDate(todayDate.getDate() - 1);
+    const date = new Date('October 11, 2024, 11:51:00');
 
     const johnDoe = {
         id: "c94c0e76-fb49-4b9b-8f07-9f93ed93b4f3",
@@ -15,37 +14,37 @@ $(async () => {
 
     let messages = [
         {
-            timestamp: yesterdayDate,
+            timestamp: (new Date()).setTime(date.getTime()),
             author: supportAgent,
             text: "Hello, John!\nHow can I assist you today?"
         },
         {
-            timestamp: yesterdayDate,
+            timestamp: (new Date()).setTime(date.getTime() + 2 * 60000),
             author: johnDoe,
             text: "Hi, I'm having trouble accessing my account."
         },
         {
-            timestamp: yesterdayDate,
+            timestamp: (new Date()).setTime(date.getTime() + 2 * 60000),
             author: johnDoe,
             text: "It says my password is incorrect."
         },
         {
-            timestamp: yesterdayDate,
+            timestamp: (new Date()).setTime(date.getTime() + 2 * 60000),
             author: supportAgent,
             text: "I can help with that. Can you please confirm your email address for security purposes?"
         },
         {
-            timestamp: yesterdayDate,
+            timestamp: (new Date()).setTime(date.getTime() + 10 * 60000),
             author: johnDoe,
             text: "Sure"
         },
         {
-            timestamp: yesterdayDate,
+            timestamp: (new Date()).setTime(date.getTime() + 10 * 60000),
             author: johnDoe,
-            text: "john.doe1357"
+            text: "🆔 john.doe1357"
         },
         {
-            timestamp: yesterdayDate,
+            timestamp: (new Date()).setTime(date.getTime() + 10 * 60000),
             author: supportAgent,
             text: "✅ Instructions to regain access have been sent to the email address you provided. "
         },
@@ -78,7 +77,7 @@ $(async () => {
     const messageTimestampFormat = 'HH:mm';
 
     const chat1 = $("#chat-1").dxChat({
-        width: 420,
+        width: 480,
         height: 720,
         items: messages,
         user: johnDoe,
@@ -90,7 +89,7 @@ $(async () => {
     }).dxChat('instance');
 
     const chat2 = $("#chat-2").dxChat({
-        width: 420,
+        width: 480,
         height: 720,
         items: messages,
         user: supportAgent,
