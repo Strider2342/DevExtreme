@@ -1,0 +1,12 @@
+.demo-container {
+    height: 100%;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.dx-avatar {
+    border: 1px solid var(--dx-color-border);
+}
