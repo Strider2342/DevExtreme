@@ -1,5 +1,5 @@
 <div class="demo-container">
-    <dx-chat [author]="supportAgent" [items]="messages$ | async" width="760" height="760"></dx-chat>
-
-    <dx-chat [author]="johnDoe" [items]="messages$ | async" width="760" height="760"></dx-chat>
+    <dx-chat [user]="johnDoe" [items]="messages" width="760" height="810"></dx-chat>
+    
+    <dx-chat [user]="supportAgent" [items]="messages" width="760" height="810"></dx-chat>
 </div>
