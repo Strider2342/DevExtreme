@@ -23,12 +23,11 @@
 
 <style scoped>
     #app {
-        height: 100%;
-        padding: 30px;
+        padding: 20px;
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 30px;
+        gap: 20px;
     }
 
     .dx-avatar {
@@ -36,7 +35,7 @@
     }
 
     .dx-chat-messagegroup.dx-chat-messagegroup-alignment-end {
-    padding-left: 44px;
+        padding-left: 44px;
     }
 
     .dx-chat-messagegroup .dx-chat-messagegroup-content {

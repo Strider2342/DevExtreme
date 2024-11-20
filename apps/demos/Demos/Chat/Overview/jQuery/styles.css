@@ -1,14 +1,13 @@
 .demo-container {
-    height: 100%;
-    padding: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
 .dx-avatar {
-    border: 1px solid var(--dx-color-border);
+  border: 1px solid var(--dx-color-border);
 }
 
 .dx-chat-messagegroup.dx-chat-messagegroup-alignment-end {
@@ -16,5 +15,5 @@
 }
 
 .dx-chat-messagegroup .dx-chat-messagegroup-content {
-    max-width: 82.5%;
+  max-width: 82.5%;
 }
