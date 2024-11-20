@@ -2,10 +2,10 @@ import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import notify from 'devextreme/ui/notify';
-
 import { DxChatModule } from 'devextreme-angular';
-import { User, Message } from 'devextreme/ui/chat';
+import { User, Message, MessageEnteredEvent } from 'devextreme/ui/chat';
+import { AppService } from './app.service';
+import { Observable } from 'rxjs';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -23,60 +23,39 @@ if (window && window.config.packageConfigPaths) {
   styleUrls: [`.${modulePrefix}/app.component.css`],
 })
 export class AppComponent {
-  date: Date = new Date();
+  currentUser: User;
+  supportAgent: User;
+  messages$: Observable<Message[]>;
+  userChatTypingUsers$: Observable<User[]>;
+  supportChatTypingUsers$: Observable<User[]>;
 
-  currentUser: User = {
-    id: "c94c0e76-fb49-4b9b-8f07-9f93ed93b4f3",
-    name: "John Doe",
-  };
-
-  supportAgent: User = {
-    id: "d16d1a4c-5c67-4e20-b70e-2991c22747c3",
-    name: "Support Agent",
-    avatarUrl: "../../../../images/petersmith.png",
-  };
-
-  messages: Message[] = [];
-
-  constructor() {
-    this.date.setHours(0, 0, 0, 0);
-    this.messages = [
-      {
-          timestamp: this.getTimestamp(this.date, -9),
-          author: this.supportAgent,
-          text: "Hello, John!\nHow can I assist you today?"
-      },
-      {
-          timestamp: this.getTimestamp(this.date, -7),
-          author: this.currentUser,
-          text: "Hi, I'm having trouble accessing my account."
-      },
-      {
-          timestamp: this.getTimestamp(this.date, -7),
-          author: this.currentUser,
-          text: "It says my password is incorrect."
-      },
-      {
-          timestamp: this.getTimestamp(this.date, -7),
-          author: this.supportAgent,
-          text: "I can help with that. Can you please confirm your UserID for security purposes?"
-      },
-      {
-          timestamp: this.getTimestamp(this.date, 1),
-          author: this.currentUser,
-          text: "john.doe1357"
-      },
-      {
-          timestamp: this.getTimestamp(this.date, 1),
-          author: this.supportAgent,
-          text: "✅ Instructions to restore access have been sent to the email address registered to your account."
-      },
-    ];
+  constructor(private appService: AppService) {
+    [this.currentUser, this.supportAgent] = this.appService.getUsers();
+    this.messages$ = this.appService.messages$;
+    this.userChatTypingUsers$ = this.appService.userChatTypingUsers$;
+    this.supportChatTypingUsers$ = this.appService.supportChatTypingUsers$;
   }
 
-  getTimestamp(date: Date, offsetMinutes: number = 0): number {
-    return date.getTime() + offsetMinutes * 60000;
+  onMessageEntered(event: MessageEnteredEvent) {
+    this.appService.onMessageEntered(event);
   }
+
+  userChatOnTypingStart() {
+    this.appService.userChatOnTypingStart();
+  }
+
+  userChatOnTypingEnd() {
+    this.appService.userChatOnTypingEnd();
+  }
+
+  supportChatOnTypingStart() {
+    this.appService.supportChatOnTypingStart();
+  }
+
+  supportChatOnTypingEnd() {
+    this.appService.supportChatOnTypingEnd();
+  }
+
 }
 
 @NgModule({
@@ -86,6 +65,7 @@ export class AppComponent {
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
+  providers: [AppService],
 })
 export class AppModule { }
 
