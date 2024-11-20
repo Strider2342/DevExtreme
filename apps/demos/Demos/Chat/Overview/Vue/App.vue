@@ -27,7 +27,7 @@
     }
 
     .dx-chat {
-        width: 760px;
+        min-width: 760px;
         height: 810px;
     }
 
