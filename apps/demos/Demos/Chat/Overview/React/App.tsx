@@ -1,72 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Chat, ChatTypes } from 'devextreme-react/chat';
+import { MessageEnteredEvent } from 'devextreme/ui/chat';
+
+import service from './data.ts';
 
 export default function App() {
-    function getTimestamp(date, offsetMinutes = 0) {
-        return date.getTime() + offsetMinutes * 60000;
+    const [ userChatTypingUsers, setUserChatTypingUsers ] = useState([]);
+    const [ supportChatTypingUsers, setSupportChatTypingUsers ] = useState([]);
+    const [ messages, setMessages ] = useState<ChatTypes.Message[]>(service.messages);
+
+    function onMessageEntered(event: MessageEnteredEvent) {
+        setMessages(prevMessages => [...prevMessages, event.message]);
     }
 
-    const date = new Date();
-    date.setHours(0, 0, 0, 0);
-
-    const currentUser: ChatTypes.User = {
-        id: "c94c0e76-fb49-4b9b-8f07-9f93ed93b4f3",
-        name: "John Doe",
-    };
-
-    const supportAgent: ChatTypes.User = {
-        id: "d16d1a4c-5c67-4e20-b7v0e-2991c22747c3",
-        name: "Support Agent",
-        avatarUrl: "../../../../images/petersmith.png",
-    };
-
-    const messages: ChatTypes.Message[] = [
-        {
-            timestamp: getTimestamp(date, -9),
-            author: supportAgent,
-            text: "Hello, John!\nHow can I assist you today?"
-        },
-        {
-            timestamp: getTimestamp(date, -7),
-            author: currentUser,
-            text: "Hi, I'm having trouble accessing my account."
-        },
-        {
-            timestamp: getTimestamp(date, -7),
-            author: currentUser,
-            text: "It says my password is incorrect."
-        },
-        {
-            timestamp: getTimestamp(date, -7),
-            author: supportAgent,
-            text: "I can help with that. Can you please confirm your UserID for security purposes?"
-        },
-        {
-            timestamp: getTimestamp(date, 1),
-            author: currentUser,
-            text: "john.doe1357"
-        },
-        {
-            timestamp: getTimestamp(date, 1),
-            author: supportAgent,
-            text: "✅ Instructions to restore access have been sent to the email address registered to your account."
-        },
-    ];
+    function userChatTypingStart() {
+        setSupportChatTypingUsers([service.supportAgent]);
+    }
+    
+    function userChatTypingEnd() {
+        setSupportChatTypingUsers([]);
+    }
+    
+    function supportChatTypingStart() {
+        setUserChatTypingUsers([service.currentUser]);
+    }
+    
+    function supportChatTypingEnd() {
+        setUserChatTypingUsers([]);
+    }
 
     return (
         <>
             <Chat
                 width={760}
                 height={810}
-                user={currentUser}
+                user={service.currentUser}
                 items={messages}
+                onMessageEntered={onMessageEntered}
+                onTypingStart={userChatTypingStart}
+                onTypingEnd={userChatTypingEnd}
+                typingUsers={userChatTypingUsers}
             />
             <Chat
                 width={760}
                 height={810}
-                user={supportAgent}
+                user={service.supportAgent}
                 items={messages}
+                onMessageEntered={onMessageEntered}
+                onTypingStart={supportChatTypingStart}
+                onTypingEnd={supportChatTypingEnd}
+                typingUsers={supportChatTypingUsers}
             />
         </>
     );
