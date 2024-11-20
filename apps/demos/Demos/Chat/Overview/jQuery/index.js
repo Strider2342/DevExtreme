@@ -15,7 +15,7 @@ $(async () => {
         avatarUrl: "https://raw.githubusercontent.com/DevExpress/DevExtreme/refs/heads/24_2/apps/demos/images/petersmith.png",
     };
 
-    let messages = [
+    let initialMessages = [
         {
             timestamp: (new Date()).setTime(date.getTime()),
             author: supportAgent,
@@ -49,8 +49,6 @@ $(async () => {
     ];
 
     function onMessageEntered({ message }) {
-        messages = [...messages, message];
-
         chat1.renderMessage(message);
         chat2.renderMessage(message);
     }
@@ -71,16 +69,11 @@ $(async () => {
         chat1.option('typingUsers', []);
     }
 
-    const dayHeaderFormat = 'dd/MM/yyyy';
-    const messageTimestampFormat = 'shorttime';
-
     const chat1 = $("#chat-1").dxChat({
         width: 760,
         height: 810,
-        items: messages,
+        items: initialMessages,
         user: johnDoe,
-        dayHeaderFormat,
-        messageTimestampFormat,
         onMessageEntered,
         onTypingStart: chat1TypingStart,
         onTypingEnd: chat1TypingEnd,
@@ -89,10 +82,8 @@ $(async () => {
     const chat2 = $("#chat-2").dxChat({
         width: 760,
         height: 810,
-        items: messages,
+        items: initialMessages,
         user: supportAgent,
-        dayHeaderFormat,
-        messageTimestampFormat,
         onMessageEntered,
         onTypingStart: chat2TypingStart,
         onTypingEnd: chat2TypingEnd,

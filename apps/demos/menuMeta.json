@@ -2052,6 +2052,19 @@
     ]
   },
   {
+    "Name": "Chat",
+    "Breadcrumb": true,
+    "Equivalents": "dxChat, dx-chat, chat",
+    "Demos": [
+      {
+        "Title": "Overview",
+        "Name": "Overview",
+        "Widget": "Chat",
+        "DemoType": "Web"
+      }
+    ]
+  },
+  {
     "Name": "Diagram",
     "Equivalents": "dxDiagram, dx-diagram, graph, flow, process, orgchart",
     "Groups": [
@@ -3308,24 +3321,6 @@
                 "Equivalents": "visualRange, rangeSelector, scrolling"
               }
             ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "Name": "Chat",
-    "Equivalents": "dxChat, dx-chat, chat",
-    "Groups": [
-      {
-        "Name": "Overview",
-        "Equivalents": "",
-        "Demos": [
-          {
-            "Title": "Overview",
-            "Name": "Overview",
-            "Widget": "Chat",
-            "DemoType": "Web"
           }
         ]
       }
