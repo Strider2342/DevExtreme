@@ -4,7 +4,7 @@ $(async () => {
     date.setHours(0, 0, 0, 0);
     date.setTime(date.getTime() + ((23 * 3600 + 51 * 60) * 1000));
 
-    const johnDoe = {
+    const currentUser = {
         id: "c94c0e76-fb49-4b9b-8f07-9f93ed93b4f3",
         name: "John Doe",
     };
@@ -23,12 +23,12 @@ $(async () => {
         },
         {
             timestamp: (new Date()).setTime(date.getTime() + 2 * 60000),
-            author: johnDoe,
+            author: currentUser,
             text: "Hi, I'm having trouble accessing my account."
         },
         {
             timestamp: (new Date()).setTime(date.getTime() + 2 * 60000),
-            author: johnDoe,
+            author: currentUser,
             text: "It says my password is incorrect."
         },
         {
@@ -38,7 +38,7 @@ $(async () => {
         },
         {
             timestamp: (new Date()).setTime(date.getTime() + 10 * 60000),
-            author: johnDoe,
+            author: currentUser,
             text: "john.doe1357"
         },
         {
@@ -49,43 +49,43 @@ $(async () => {
     ];
 
     function onMessageEntered({ message }) {
-        chat1.renderMessage(message);
-        chat2.renderMessage(message);
+        userChat.renderMessage(message);
+        supportChat.renderMessage(message);
     }
 
-    function chat1TypingStart() {
-        chat2.option('typingUsers', [johnDoe]);
+    function userChatTypingStart() {
+        supportChat.option('typingUsers', [currentUser]);
     }
 
-    function chat1TypingEnd() {
-        chat2.option('typingUsers', []);
+    function userChatTypingEnd() {
+        supportChat.option('typingUsers', []);
     }
 
-    function chat2TypingStart() {
-        chat1.option('typingUsers', [supportAgent]);
+    function supportChatTypingStart() {
+        userChat.option('typingUsers', [supportAgent]);
     }
 
-    function chat2TypingEnd() {
-        chat1.option('typingUsers', []);
+    function supportChatTypingEnd() {
+        userChat.option('typingUsers', []);
     }
 
-    const chat1 = $("#chat-1").dxChat({
+    const userChat = $("#user-chat").dxChat({
         width: 760,
         height: 810,
         items: initialMessages,
-        user: johnDoe,
+        user: currentUser,
         onMessageEntered,
-        onTypingStart: chat1TypingStart,
-        onTypingEnd: chat1TypingEnd,
+        onTypingStart: userChatTypingStart,
+        onTypingEnd: userChatTypingEnd,
     }).dxChat('instance');
 
-    const chat2 = $("#chat-2").dxChat({
+    const supportChat = $("#support-chat").dxChat({
         width: 760,
         height: 810,
         items: initialMessages,
         user: supportAgent,
         onMessageEntered,
-        onTypingStart: chat2TypingStart,
-        onTypingEnd: chat2TypingEnd,
+        onTypingStart: supportChatTypingStart,
+        onTypingEnd: supportChatTypingEnd,
     }).dxChat('instance');
 });

@@ -25,7 +25,7 @@ if (window && window.config.packageConfigPaths) {
 export class AppComponent {
   date: Date = new Date();
 
-  johnDoe: User = {
+  currentUser: User = {
     id: "c94c0e76-fb49-4b9b-8f07-9f93ed93b4f3",
     name: "John Doe",
   };
@@ -44,12 +44,12 @@ export class AppComponent {
     },
     {
         timestamp: (new Date()).setTime(this.date.getTime() + 2 * 60000),
-        author: this.johnDoe,
+        author: this.currentUser,
         text: "Hi, I'm having trouble accessing my account."
     },
     {
         timestamp: (new Date()).setTime(this.date.getTime() + 2 * 60000),
-        author: this.johnDoe,
+        author: this.currentUser,
         text: "It says my password is incorrect."
     },
     {
@@ -59,7 +59,7 @@ export class AppComponent {
     },
     {
         timestamp: (new Date()).setTime(this.date.getTime() + 10 * 60000),
-        author: this.johnDoe,
+        author: this.currentUser,
         text: "john.doe1357"
     },
     {

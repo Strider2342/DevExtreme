@@ -8,7 +8,7 @@ export default function App() {
     date.setHours(0, 0, 0, 0);
     date.setTime(date.getTime() + ((23 * 3600 + 51 * 60) * 1000));
 
-    const johnDoe: ChatTypes.User = {
+    const currentUser: ChatTypes.User = {
         id: "c94c0e76-fb49-4b9b-8f07-9f93ed93b4f3",
         name: "John Doe",
     };
@@ -27,12 +27,12 @@ export default function App() {
         },
         {
             timestamp: (new Date()).setTime(date.getTime() + 2 * 60000),
-            author: johnDoe,
+            author: currentUser,
             text: "Hi, I'm having trouble accessing my account."
         },
         {
             timestamp: (new Date()).setTime(date.getTime() + 2 * 60000),
-            author: johnDoe,
+            author: currentUser,
             text: "It says my password is incorrect."
         },
         {
@@ -42,7 +42,7 @@ export default function App() {
         },
         {
             timestamp: (new Date()).setTime(date.getTime() + 10 * 60000),
-            author: johnDoe,
+            author: currentUser,
             text: "john.doe1357"
         },
         {
@@ -57,7 +57,7 @@ export default function App() {
             <Chat
                 width={760}
                 height={810}
-                user={johnDoe}
+                user={currentUser}
                 items={messages}
             />
             <Chat
