@@ -16,7 +16,7 @@ export default function App() {
     const supportAgent: ChatTypes.User = {
         id: "d16d1a4c-5c67-4e20-b7v0e-2991c22747c3",
         name: "Support Agent",
-        avatarUrl: "http://az-jsserver.corp.devexpress.com:81/Angular/Demos-24.2/WidgetsGallery/JSDemos/images/petersmith.png",
+        avatarUrl: "https://raw.githubusercontent.com/DevExpress/DevExtreme/refs/heads/24_2/apps/demos/images/petersmith.png",
     };
 
     const messages: ChatTypes.Message[] = [
