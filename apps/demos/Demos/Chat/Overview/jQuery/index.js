@@ -1,8 +1,10 @@
 $(async () => {
+    const getTimestamp = function(date, offsetMinutes = 0) {
+        return date.getTime() + offsetMinutes * 60000;
+    }
+
     const date = new Date();
-    date.setDate(date.getDate() - 1);
     date.setHours(0, 0, 0, 0);
-    date.setTime(date.getTime() + ((23 * 3600 + 51 * 60) * 1000));
 
     const currentUser = {
         id: "c94c0e76-fb49-4b9b-8f07-9f93ed93b4f3",
@@ -17,32 +19,32 @@ $(async () => {
 
     let initialMessages = [
         {
-            timestamp: (new Date()).setTime(date.getTime()),
+            timestamp: getTimestamp(date, -9),
             author: supportAgent,
             text: "Hello, John!\nHow can I assist you today?"
         },
         {
-            timestamp: (new Date()).setTime(date.getTime() + 2 * 60000),
+            timestamp: getTimestamp(date, -7),
             author: currentUser,
             text: "Hi, I'm having trouble accessing my account."
         },
         {
-            timestamp: (new Date()).setTime(date.getTime() + 2 * 60000),
+            timestamp: getTimestamp(date, -7),
             author: currentUser,
             text: "It says my password is incorrect."
         },
         {
-            timestamp: (new Date()).setTime(date.getTime() + 2 * 60000),
+            timestamp: getTimestamp(date, -7),
             author: supportAgent,
             text: "I can help with that. Can you please confirm your UserID for security purposes?"
         },
         {
-            timestamp: (new Date()).setTime(date.getTime() + 10 * 60000),
+            timestamp: getTimestamp(date, 1),
             author: currentUser,
             text: "john.doe1357"
         },
         {
-            timestamp: (new Date()).setTime(date.getTime() + 10 * 60000),
+            timestamp: getTimestamp(date, 1),
             author: supportAgent,
             text: "✅ Instructions to restore access have been sent to the email address registered to your account."
         },

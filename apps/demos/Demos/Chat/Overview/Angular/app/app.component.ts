@@ -36,47 +36,46 @@ export class AppComponent {
     avatarUrl: "../../../../images/petersmith.png",
   };
 
-  messages: Message[] = [
-    {
-        timestamp: (new Date()).setTime(this.date.getTime()),
-        author: this.supportAgent,
-        text: "Hello, John!\nHow can I assist you today?"
-    },
-    {
-        timestamp: (new Date()).setTime(this.date.getTime() + 2 * 60000),
-        author: this.currentUser,
-        text: "Hi, I'm having trouble accessing my account."
-    },
-    {
-        timestamp: (new Date()).setTime(this.date.getTime() + 2 * 60000),
-        author: this.currentUser,
-        text: "It says my password is incorrect."
-    },
-    {
-        timestamp: (new Date()).setTime(this.date.getTime() + 2 * 60000),
-        author: this.supportAgent,
-        text: "I can help with that. Can you please confirm your UserID for security purposes?"
-    },
-    {
-        timestamp: (new Date()).setTime(this.date.getTime() + 10 * 60000),
-        author: this.currentUser,
-        text: "john.doe1357"
-    },
-    {
-        timestamp: (new Date()).setTime(this.date.getTime() + 10 * 60000),
-        author: this.supportAgent,
-        text: "✅ Instructions to restore access have been sent to the email address registered to your account."
-    },
-  ];
+  messages: Message[] = [];
 
   constructor() {
-    this.date.setDate(this.date.getDate() - 1);
     this.date.setHours(0, 0, 0, 0);
-    this.date.setTime(this.date.getTime() + ((23 * 3600 + 51 * 60) * 1000));
+    this.messages = [
+      {
+          timestamp: this.getTimestamp(this.date, -9),
+          author: this.supportAgent,
+          text: "Hello, John!\nHow can I assist you today?"
+      },
+      {
+          timestamp: this.getTimestamp(this.date, -7),
+          author: this.currentUser,
+          text: "Hi, I'm having trouble accessing my account."
+      },
+      {
+          timestamp: this.getTimestamp(this.date, -7),
+          author: this.currentUser,
+          text: "It says my password is incorrect."
+      },
+      {
+          timestamp: this.getTimestamp(this.date, -7),
+          author: this.supportAgent,
+          text: "I can help with that. Can you please confirm your UserID for security purposes?"
+      },
+      {
+          timestamp: this.getTimestamp(this.date, 1),
+          author: this.currentUser,
+          text: "john.doe1357"
+      },
+      {
+          timestamp: this.getTimestamp(this.date, 1),
+          author: this.supportAgent,
+          text: "✅ Instructions to restore access have been sent to the email address registered to your account."
+      },
+    ];
   }
 
-  showNotify(text: string) {
-    notify(`The "${text}" button is clicked.`);
+  getTimestamp(date: Date, offsetMinutes: number = 0): number {
+    return date.getTime() + offsetMinutes * 60000;
   }
 }
 
