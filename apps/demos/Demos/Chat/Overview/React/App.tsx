@@ -1,57 +1,57 @@
 import React, { useState } from 'react';
 
-import { Chat, ChatTypes } from 'devextreme-react/chat';
-import { MessageEnteredEvent } from 'devextreme/ui/chat';
+import Chat, { ChatTypes } from 'devextreme-react/chat';
+import { MessageEnteredEvent, TypingEndEvent, TypingStartEvent } from 'devextreme/ui/chat';
 
-import service from './data.ts';
+import { currentUser, supportAgent, initialMessages } from './data.ts';
 
 export default function App() {
-    const [ userChatTypingUsers, setUserChatTypingUsers ] = useState([]);
-    const [ supportChatTypingUsers, setSupportChatTypingUsers ] = useState([]);
-    const [ messages, setMessages ] = useState<ChatTypes.Message[]>(service.messages);
+  const [userChatTypingUsers, setUserChatTypingUsers] = useState<ChatTypes.User[]>([]);
+  const [supportChatTypingUsers, setSupportChatTypingUsers] = useState<ChatTypes.User[]>([]);
+  const [messages, setMessages] = useState<ChatTypes.Message[]>(initialMessages);
 
-    function onMessageEntered(event: MessageEnteredEvent) {
-        setMessages(prevMessages => [...prevMessages, event.message]);
-    }
+  function onMessageEntered({ message }: MessageEnteredEvent) {
+    setMessages(prevMessages => [...prevMessages, message]);
+  }
 
-    function userChatTypingStart() {
-        setSupportChatTypingUsers([service.supportAgent]);
+  function typingStart({ user }: TypingStartEvent) {
+    if (user.id === currentUser.id) {
+      setSupportChatTypingUsers([supportAgent]);
+    } else {
+      setUserChatTypingUsers([currentUser]);
     }
-    
-    function userChatTypingEnd() {
-        setSupportChatTypingUsers([]);
-    }
-    
-    function supportChatTypingStart() {
-        setUserChatTypingUsers([service.currentUser]);
-    }
-    
-    function supportChatTypingEnd() {
-        setUserChatTypingUsers([]);
-    }
+  }
 
-    return (
-        <>
-            <Chat
-                width={760}
-                height={810}
-                user={service.currentUser}
-                items={messages}
-                onMessageEntered={onMessageEntered}
-                onTypingStart={userChatTypingStart}
-                onTypingEnd={userChatTypingEnd}
-                typingUsers={userChatTypingUsers}
-            />
-            <Chat
-                width={760}
-                height={810}
-                user={service.supportAgent}
-                items={messages}
-                onMessageEntered={onMessageEntered}
-                onTypingStart={supportChatTypingStart}
-                onTypingEnd={supportChatTypingEnd}
-                typingUsers={supportChatTypingUsers}
-            />
-        </>
-    );
+  function typingEnd({ user }: TypingEndEvent) {
+    if (user.id === currentUser.id) {
+      setSupportChatTypingUsers([]);
+    } else {
+      setUserChatTypingUsers([]);
+    }
+  }
+
+  return (
+    <React.Fragment>
+      <Chat
+        width={760}
+        height={810}
+        user={currentUser}
+        items={messages}
+        onMessageEntered={onMessageEntered}
+        onTypingStart={typingStart}
+        onTypingEnd={typingEnd}
+        typingUsers={userChatTypingUsers}
+      />
+      <Chat
+        width={760}
+        height={810}
+        user={supportAgent}
+        items={messages}
+        onMessageEntered={onMessageEntered}
+        onTypingStart={typingStart}
+        onTypingEnd={typingEnd}
+        typingUsers={supportChatTypingUsers}
+      />
+    </React.Fragment>
+  );
 }
