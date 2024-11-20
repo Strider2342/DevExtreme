@@ -12,7 +12,7 @@ $(async () => {
     const supportAgent = {
         id: "d16d1a4c-5c67-4e20-b70e-2991c22747c3",
         name: "Support Agent",
-        avatarUrl: "https://raw.githubusercontent.com/DevExpress/DevExtreme/refs/heads/24_2/apps/demos/images/petersmith.png",
+        avatarUrl: "../../../../images/petersmith.png",
     };
 
     let initialMessages = [
