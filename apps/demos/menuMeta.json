@@ -2061,7 +2061,7 @@
           {
             "Title": "Overview",
             "Name": "Overview",
-            "DocUrl": "",
+            "DocUrl": "Guide/UI_Components/Chat/Overview/",
             "Widget": "Chat",
             "DemoType": "Web"
           }
