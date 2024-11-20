@@ -33,8 +33,6 @@ export default function App() {
   return (
     <React.Fragment>
       <Chat
-        width={760}
-        height={810}
         user={currentUser}
         items={messages}
         onMessageEntered={onMessageEntered}
@@ -43,8 +41,6 @@ export default function App() {
         typingUsers={userChatTypingUsers}
       />
       <Chat
-        width={760}
-        height={810}
         user={supportAgent}
         items={messages}
         onMessageEntered={onMessageEntered}

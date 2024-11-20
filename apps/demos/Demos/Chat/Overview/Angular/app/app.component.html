@@ -1,8 +1,8 @@
 <div class="demo-container">
     <dx-chat [user]="currentUser" [items]="messages$ | async" [typingUsers]="userChatTypingUsers$ | async"
         (onMessageEntered)="onMessageEntered($event)" (onTypingStart)="userChatOnTypingStart()"
-        (onTypingEnd)="userChatOnTypingEnd()" width="760" height="810"></dx-chat>
+        (onTypingEnd)="userChatOnTypingEnd()"></dx-chat>
     <dx-chat [user]="supportAgent" [items]="messages$ | async" [typingUsers]="supportChatTypingUsers$ | async"
         (onMessageEntered)="onMessageEntered($event)" (onTypingStart)="supportChatOnTypingStart()"
-        (onTypingEnd)="supportChatOnTypingEnd()" width="760" height="810"></dx-chat>
+        (onTypingEnd)="supportChatOnTypingEnd()"></dx-chat>
 </div>

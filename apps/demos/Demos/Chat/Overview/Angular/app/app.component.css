@@ -6,6 +6,11 @@
   gap: 20px;
 }
 
+::ng-deep .dx-chat {
+  width: 760px;
+  height: 810px;
+}
+
 ::ng-deep .dx-avatar {
   border: 1px solid var(--dx-color-border);
 }

@@ -72,8 +72,6 @@ $(async () => {
     }
 
     const userChat = $("#user-chat").dxChat({
-        width: 760,
-        height: 810,
         items: initialMessages,
         user: currentUser,
         onMessageEntered,
@@ -82,8 +80,6 @@ $(async () => {
     }).dxChat('instance');
 
     const supportChat = $("#support-chat").dxChat({
-        width: 760,
-        height: 810,
         items: initialMessages,
         user: supportAgent,
         onMessageEntered,

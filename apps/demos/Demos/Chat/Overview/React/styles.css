@@ -6,6 +6,11 @@
   gap: 20px;
 }
 
+.dx-chat {
+  width: 760px;
+  height: 810px;
+}
+
 .dx-avatar {
   border: 1px solid var(--dx-color-border);
 }

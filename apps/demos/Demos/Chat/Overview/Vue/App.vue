@@ -1,7 +1,5 @@
 <template>
     <DxChat
-        width="760"
-        height="810"
         v-model:items="messages"
         v-model:user="currentUser"
         v-model:typing-users="userChatTypingUsers"
@@ -10,8 +8,6 @@
         @typing-end="userChatTypingEnd()"
     ></DxChat>
     <DxChat
-        width="760"
-        height="810"
         v-model:items="messages"
         v-model:user="supportAgent"
         v-model:typing-users="supportChatTypingUsers"
@@ -28,6 +24,11 @@
         justify-content: center;
         align-items: center;
         gap: 20px;
+    }
+
+    .dx-chat {
+        width: 760px;
+        height: 810px;
     }
 
     .dx-avatar {
