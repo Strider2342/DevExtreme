@@ -2055,12 +2055,17 @@
     "Name": "Chat",
     "Breadcrumb": true,
     "Equivalents": "dxChat, dx-chat, chat",
-    "Demos": [
+    "Groups": [
       {
-        "Title": "Overview",
-        "Name": "Overview",
-        "Widget": "Chat",
-        "DemoType": "Web"
+        "Demos": [
+          {
+            "Title": "Overview",
+            "Name": "Overview",
+            "DocUrl": "",
+            "Widget": "Chat",
+            "DemoType": "Web"
+          }
+        ]
       }
     ]
   },
