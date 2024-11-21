@@ -19,15 +19,11 @@
 
 <style scoped>
     #app {
-        padding: 20px;
         display: flex;
-        justify-content: center;
-        align-items: center;
         gap: 20px;
     }
 
     .dx-chat {
-        min-width: 760px;
         height: 810px;
     }
 
