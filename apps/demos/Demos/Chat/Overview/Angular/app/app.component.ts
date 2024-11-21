@@ -55,7 +55,6 @@ export class AppComponent {
   supportChatOnTypingEnd() {
     this.appService.supportChatOnTypingEnd();
   }
-
 }
 
 @NgModule({
