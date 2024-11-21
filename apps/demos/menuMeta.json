@@ -2065,7 +2065,8 @@
             "Name": "Overview",
             "DocUrl": "Guide/UI_Components/Chat/Overview/",
             "Widget": "Chat",
-            "DemoType": "Web"
+            "DemoType": "Web",
+            "Badge": "New"
           }
         ]
       }
