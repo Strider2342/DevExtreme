@@ -2057,6 +2057,8 @@
     "Equivalents": "dxChat, dx-chat, chat",
     "Groups": [
       {
+        "Name": "Overview",
+        "Equivalents": "",
         "Demos": [
           {
             "Title": "Overview",
