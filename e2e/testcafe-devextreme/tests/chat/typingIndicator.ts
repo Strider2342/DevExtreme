@@ -127,3 +127,43 @@ test('Chat: typing indicator', async (t) => {
     typingUsers,
   }, '#chat');
 });
+
+test('Chat: typing indicator with two chats', async (t) => {
+  const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
+
+  const chat1 = new Chat('#chat1');
+  const chat2 = new Chat('#chat2');
+
+  await t.typeText(chat1.getInput(), 'Test text 1');
+  await testScreenshot(t, takeScreenshot, 'Typing indicator in chat 2 when user 1 is typing.png', { element: '#chat2' });
+
+  await t.typeText(chat2.getInput(), 'Test text 2');
+  await testScreenshot(t, takeScreenshot, 'Typing indicator in chat 1 when user 2 is typing.png', { element: '#chat1' });
+
+  await t
+    .expect(compareResults.isValid())
+    .ok(compareResults.errorMessages());
+}).before(async () => {
+  await appendElementTo('#container', 'div', 'chat1');
+  await appendElementTo('#otherContainer', 'div', 'chat2');
+  await insertStylesheetRulesToPage(`.${CHAT_TYPINGINDICATOR_CIRCLE_CLASS} { animation: none !important; }`);
+
+  const userFirst = createUser(1, 'Elise Moreau');
+  const userSecond = createUser(2, 'Pierre Martin');
+
+  const items = generateMessages(5, userFirst, userSecond);
+
+  await createWidget('dxChat', {
+    user: userFirst,
+    width: 400,
+    height: 600,
+    items,
+  }, '#chat1');
+
+  await createWidget('dxChat', {
+    user: userSecond,
+    width: 400,
+    height: 600,
+    items,
+  }, '#chat2');
+});
