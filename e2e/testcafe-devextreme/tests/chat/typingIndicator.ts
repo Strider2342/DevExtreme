@@ -134,10 +134,15 @@ test('Chat: typing indicator with two chats', async (t) => {
   const chat1 = new Chat('#chat1');
   const chat2 = new Chat('#chat2');
 
+  const userFirst = createUser(1, 'Camille');
+  const userSecond = createUser(2, 'Sophie');
+
   await t.typeText(chat1.getInput(), 'Test text 1');
+  await chat2.option('typingUsers', [userFirst]);
   await testScreenshot(t, takeScreenshot, 'Typing indicator in chat 2 when user 1 is typing.png', { element: '#chat2' });
 
   await t.typeText(chat2.getInput(), 'Test text 2');
+  await chat1.option('typingUsers', [userSecond]);
   await testScreenshot(t, takeScreenshot, 'Typing indicator in chat 1 when user 2 is typing.png', { element: '#chat1' });
 
   await t
