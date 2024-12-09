@@ -14,9 +14,9 @@ fixture('Chat.Overview')
 runManualTest('Chat', 'Overview', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
   test('Overview', async (t) => {
     await ClientFunction(() => {
-      const styleElement = document.createElement('style');
-      styleElement.innerHTML = `.dx-chat-typingindicator-circle { animation: none !important; }`;  
-      document.head.appendChild(styleElement);
+      // const styleElement = document.createElement('style');
+      // styleElement.innerHTML = `.dx-chat-typingindicator-circle { animation: none !important; }`;  
+      // document.head.appendChild(styleElement);
     });
 
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
