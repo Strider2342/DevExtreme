@@ -9,7 +9,7 @@ fixture('Chat.Overview')
     ctx.initialWindowSize = [900, 800];
   });
 
-runManualTest('Chat', 'Overview', ['jQuery'], (test) => {
+runManualTest('Chat', 'Overview', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
   test('Overview', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
