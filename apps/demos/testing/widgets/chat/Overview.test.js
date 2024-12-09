@@ -10,7 +10,7 @@ fixture('Chat.Overview')
 
 runManualTest('Chat', 'Overview', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
   test('Overview', async (t) => {
-    await ClientFunction((pixels) => {
+    await ClientFunction(() => {
       const styleElement = document.createElement('style');
       styleElement.innerHTML = `.dx-chat-typingindicator-circle { animation: none !important; }`;  
       document.head.appendChild(styleElement);
