@@ -26,6 +26,7 @@ export default function App() {
   return (
     <React.Fragment>
       <Chat
+        elementAttr={{ id: 'user-chat' }}
         user={currentUser}
         items={messages}
         onMessageEntered={onMessageEntered}
@@ -34,6 +35,7 @@ export default function App() {
         typingUsers={userChatTypingUsers}
       />
       <Chat
+        elementAttr={{ id: 'support-chat' }}
         user={supportAgent}
         items={messages}
         onMessageEntered={onMessageEntered}

@@ -1,5 +1,6 @@
 <template>
   <DxChat
+    :element-attr="{ id: 'user-chat' }"
     v-model:items="messages"
     v-model:user="currentUser"
     v-model:typing-users="userChatTypingUsers"
@@ -8,6 +9,7 @@
     @typing-end="userChatTypingEnd()"
   />
   <DxChat
+    :element-attr="{ id: 'support-chat' }"
     v-model:items="messages"
     v-model:user="supportAgent"
     v-model:typing-users="supportChatTypingUsers"
